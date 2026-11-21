@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#145644">
+  <meta name="description" content="Tra cứu sách 700 bài thuốc dưỡng sinh – Trị bệnh bằng Hành, Gừng, Tỏi. Tìm không dấu, lưu mục, ghi chú và đối chiếu PDF gốc.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Hành Gừng Tỏi">
+  <meta name="color-scheme" content="light dark">
+  <title>Hành • Gừng • Tỏi · Tra cứu sách</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua đến nội dung</a>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Z"/><path d="M12 5v15"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3Z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2.2"/><circle cx="16" cy="12" r="2.2"/><circle cx="10" cy="18" r="2.2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v1"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C8 1 2 8 6 15s16 3 14-12Z"/><path d="M4 21 16 8"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M14 3H4v18h16V11M13 12l-1 4 4-1 6-6-3-3-6 6Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M7 10H4v11h16V10h-3"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H3V8h18v9h-4M7 14h10v7H7Z"/><path d="M17 11h1"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 8a15 15 0 0 1 18 0M6 12a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="20" r=".6"/></symbol>
+  </svg>
+
+  <header class="app-header">
+    <a class="brand" href="#/search" aria-label="Hành Gừng Tỏi, trang tra cứu">
+      <img src="/icons/icon.svg" alt="" width="44" height="44">
+      <span><strong>Hành • Gừng • Tỏi</strong><small>Tủ sách tra cứu</small></span>
+    </a>
+    <div class="header-actions">
+      <span id="networkBadge" class="status-badge">Đang tải thư viện</span>
+      <button class="button button-primary install-top" id="installTop" type="button" hidden>Cài ứng dụng</button>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Điều hướng chính">
+    <a href="#/search" data-view="search" class="nav-item active"><svg class="icon"><use href="#i-search"/></svg><span>Tra cứu</span></a>
+    <a href="#/categories" data-view="categories" class="nav-item"><svg class="icon"><use href="#i-grid"/></svg><span>Danh mục</span></a>
+    <a href="#/saved" data-view="saved" class="nav-item"><svg class="icon"><use href="#i-save"/></svg><span>Đã lưu</span><span id="savedBadge" class="nav-count" hidden>0</span></a>
+    <a href="#/settings" data-view="settings" class="nav-item"><svg class="icon"><use href="#i-settings"/></svg><span>Tùy chọn</span></a>
+    <div class="sidebar-note"><svg class="icon"><use href="#i-book"/></svg><p>Một cuốn sách.<br>Mở ra thật dễ.</p><small>Phiên bản 1.0</small></div>
+  </nav>
+
+  <main id="main" class="main-content" tabindex="-1">
+    <div id="loading" class="loading-panel" role="status"><span class="loader"></span><h2>Đang mở thư viện…</h2><p>Nội dung sẽ được lưu để tra cứu ngoại tuyến.</p></div>
+    <div id="loadError" class="empty-state" hidden><svg class="icon"><use href="#i-info"/></svg><h2>Chưa tải được nội dung</h2><p id="loadErrorMessage">Hãy kiểm tra kết nối rồi thử lại.</p><button class="button button-primary" id="retryLoad">Thử lại</button></div>
+
+    <section id="view-search" class="view" hidden aria-labelledby="searchHeading">
+      <div class="library-intro">
+        <div class="intro-copy">
+          <span class="eyebrow">TỦ SÁCH THAM KHẢO</span>
+          <h1 id="searchHeading">Hành <span class="title-dot">•</span> Gừng <span class="title-dot">•</span> Tỏi</h1>
+          <p class="book-subtitle">700 bài thuốc dưỡng sinh<br>Trị bệnh bằng Hành, Gừng, Tỏi</p><p class="intro-description">Tìm trong sách, đọc từng mục và giữ lại những trang cần tra cứu.</p>
+          <div class="book-stats" id="bookStats"></div>
+        </div>
+        <img class="cover-image" src="/assets/cover.webp" alt="Bìa sách 700 bài thuốc dưỡng sinh – Trị bệnh bằng Hành, Gừng, Tỏi" width="100" height="151">
+      </div>
+      <div class="reference-note"><svg class="icon"><use href="#i-info"/></svg><p>Nội dung trích theo sách. Đối chiếu PDF gốc ở những chỗ mờ, cắt mép hoặc số lượng chưa rõ; hỏi người có chuyên môn trước khi áp dụng bài thuốc.</p></div>
+      <div class="search-panel">
+        <form id="searchForm" role="search" autocomplete="off">
+          <label class="sr-only" for="searchInput">Tìm trong cuốn sách</label>
+          <div class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Tên bệnh, vị thuốc hoặc từ khóa…" maxlength="180" enterkeyhint="search"><button id="clearSearch" class="icon-button" type="button" aria-label="Xóa từ khóa" hidden><svg class="icon"><use href="#i-close"/></svg></button></div>
+        </form>
+        <div class="search-scopes" aria-label="Phạm vi tìm kiếm">
+          <button type="button" data-mode="all" class="scope-button active" aria-pressed="true">Toàn bộ nội dung</button>
+          <button type="button" data-mode="uses" class="scope-button" aria-pressed="false">Chủ trị / tác dụng</button>
+          <button type="button" data-mode="ingredients" class="scope-button" aria-pressed="false">Thành phần</button>
+        </div>
+        <div class="example-searches" id="examples"><span>Thử tìm:</span><button type="button" data-query="gừng tươi">gừng tươi</button><button type="button" data-query="cảm cúm">cảm cúm</button><button type="button" data-query="tỏi">tỏi</button><small>Gõ có dấu hoặc không dấu đều được</small></div>
+        <div class="filters">
+          <label>Chương / nhóm nội dung<select id="categoryFilter"><option value="">Tất cả chương</option></select></label>
+          <label id="subcategoryWrap" hidden>Mục trong sách<select id="subcategoryFilter"><option value="">Tất cả mục</option></select></label>
+          <label class="kind-filter">Loại nội dung<select id="kindFilter"><option value="">Tất cả nội dung</option><option value="recipe">Bài thuốc theo sách</option><option value="reference">Mục tham khảo</option></select></label>
+          <label class="sort-filter">Sắp xếp<select id="sortFilter"><option value="relevance">Phù hợp với từ khóa</option><option value="book">Thứ tự trong sách</option></select></label>
+        </div>
+      </div>
+      <div class="results-heading"><h2 id="resultCount" aria-live="polite"></h2><button type="button" id="resetFilters" class="text-button" hidden>Xóa bộ lọc</button></div>
+      <div id="results" class="recipe-grid"></div>
+      <button type="button" id="loadMore" class="button button-outline load-more" hidden>Xem thêm</button>
+    </section>
+
+    <section id="view-categories" class="view" hidden aria-labelledby="categoriesHeading">
+      <div class="page-heading"><span class="eyebrow">MỤC LỤC</span><h1 id="categoriesHeading">Chương và mục trong sách</h1><p>Mở một chương, rồi chọn tên bệnh hoặc mục tham khảo để đọc nội dung tương ứng.</p></div>
+      <div id="categoriesGrid" class="category-grid"></div>
+    </section>
+
+    <section id="view-saved" class="view" hidden aria-labelledby="savedHeading">
+      <div class="page-heading"><span class="eyebrow">GÓC ĐỌC CỦA BẠN</span><h1 id="savedHeading">Những mục muốn đọc lại</h1><p>Các mục đã lưu và ghi chú được giữ trên thiết bị này.</p></div>
+      <div class="saved-tabs" aria-label="Danh sách cá nhân"><button type="button" data-saved-tab="favorites" aria-pressed="true" class="active">Đã đánh dấu</button><button type="button" data-saved-tab="recent" aria-pressed="false">Vừa xem</button><button type="button" data-saved-tab="notes" aria-pressed="false">Có ghi chú</button></div>
+      <p id="savedCount" class="muted"></p>
+      <div id="savedResults" class="recipe-grid"></div>
+    </section>
+
+    <section id="view-settings" class="view" hidden aria-labelledby="settingsHeading">
+      <div class="page-heading"><span class="eyebrow">THIẾT LẬP THƯ VIỆN</span><h1 id="settingsHeading">Đọc theo cách của bạn</h1><p>Cài lên màn hình chính, thay đổi chữ và giữ bản sao ghi chú.</p></div>
+      <div class="settings-grid">
+        <section class="settings-card"><h2>Hiển thị</h2><label for="themeSelect">Giao diện</label><select id="themeSelect"><option value="system">Theo thiết bị</option><option value="light">Sáng</option><option value="dark">Tối</option></select><div class="setting-row"><span>Cỡ chữ khi đọc bài</span><div class="font-controls"><button type="button" class="icon-button" id="fontSmaller" aria-label="Giảm cỡ chữ">A−</button><output id="fontValue">18</output><button type="button" class="icon-button" id="fontLarger" aria-label="Tăng cỡ chữ">A+</button></div></div><p class="reading-preview">Giữ một trang sách gần bên mình.</p></section>
+        <section class="settings-card"><h2>Cài trên điện thoại</h2><p>Mở ứng dụng từ màn hình chính để tra cứu thuận tiện hơn.</p><button id="installSettings" class="button button-primary" type="button"><svg class="icon"><use href="#i-download"/></svg>Cài hoặc xem hướng dẫn</button><div class="install-instructions"><p><strong>Android · Chrome</strong><br>Menu ⋮ → Cài đặt và tạo lối tắt → Cài đặt. Một số máy ghi “Thêm vào màn hình chính”.</p><p><strong>iPhone · Safari</strong><br>Chia sẻ → Thêm vào Màn hình chính → Thêm. Bật “Mở dưới dạng ứng dụng web” nếu có.</p></div></section>
+        <section class="settings-card"><h2>Đọc ngoại tuyến</h2><p id="offlineStatus">Đang kiểm tra dữ liệu trên thiết bị…</p><p class="muted">Phần chữ của thư viện dùng được sau lần tải hoàn tất. Tệp PDF gốc cần được mở hoặc tải riêng trước khi đọc không có mạng.</p><div class="button-stack"><button id="checkUpdate" type="button" class="button button-outline">Kiểm tra phiên bản mới</button><button id="cacheSource" type="button" class="button button-outline"><svg class="icon"><use href="#i-download"/></svg>Lưu PDF gốc để đọc offline</button></div><p id="sourceCacheStatus" class="muted small"></p></section>
+        <section class="settings-card"><h2>Sao lưu dấu trang và ghi chú</h2><p>Dữ liệu riêng lưu trên trình duyệt của thiết bị. Xuất bản sao để giữ lại hoặc mang sang điện thoại khác.</p><div class="button-stack"><button id="exportBackup" type="button" class="button button-outline"><svg class="icon"><use href="#i-download"/></svg>Xuất bản sao lưu</button><button id="importBackup" type="button" class="button button-outline"><svg class="icon"><use href="#i-upload"/></svg>Nhập và gộp bản sao lưu</button></div><input id="backupFile" type="file" accept=".json,application/json" class="sr-only" tabindex="-1"><p class="muted small">Nhập bản sao sẽ gộp dấu trang và giữ cả ghi chú đang có. Phiên bản này chưa đồng bộ tự động giữa các thiết bị.</p></section>
+        <section class="settings-card about-card"><div class="about-heading"><img src="/assets/cover.webp" alt="" width="62" height="94"><div><span class="eyebrow">TÀI LIỆU NGUỒN</span><h2>700 bài thuốc dưỡng sinh – Trị bệnh bằng Hành, Gừng, Tỏi</h2><p>Trương Chí Hoa · Ngọc Minh dịch<br>Nhà xuất bản Thanh Hoá</p></div></div><p>Văn bản được chuyển từ bản PDF quét bạn cung cấp. Tên gọi và số lượng giữ theo tài liệu; các đoạn thiếu, mờ hoặc cắt mép cần đối chiếu ảnh gốc. “700 bài thuốc” là một phần nhan đề; số mục tra cứu được tính từ nội dung đã biên tập.</p><div id="bookSourceNotes" class="source-notes" hidden></div><p><strong>Ứng dụng là công cụ tra cứu sách.</strong> Nội dung lịch sử trong sách không phải hướng dẫn điều trị cá nhân. Hãy trao đổi với người hành nghề y có chuyên môn trước khi áp dụng.</p><div class="button-stack"><a class="button button-outline" href="/source/book.pdf" target="_blank" rel="noopener"><svg class="icon"><use href="#i-book"/></svg><span id="sourcePdfLabel">Mở PDF gốc · 371 trang</span></a></div><small id="versionInfo">Ứng dụng 1.0 · Tiếng Việt</small></section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="recipeDialog" class="recipe-dialog" aria-labelledby="detailTitle">
+    <div class="detail-toolbar"><button type="button" id="closeDetail" class="button button-quiet"><svg class="icon"><use href="#i-close"/></svg>Đóng</button><div class="detail-actions"><button type="button" id="detailSave" class="icon-button" aria-label="Đánh dấu mục" aria-pressed="false"><svg class="icon"><use href="#i-save"/></svg></button><button type="button" id="detailShare" class="icon-button" aria-label="Chia sẻ liên kết mục"><svg class="icon"><use href="#i-share"/></svg></button><button type="button" id="detailPrint" class="icon-button desktop-print" aria-label="In mục đang xem"><svg class="icon"><use href="#i-print"/></svg></button></div></div>
+    <article id="detailContent" class="detail-content"></article>
+    <section class="personal-note"><div class="note-heading"><h2><svg class="icon"><use href="#i-note"/></svg>Ghi chú riêng</h2><span id="noteStatus" class="muted small"></span></div><label for="recipeNote" class="sr-only">Ghi chú riêng cho bài đang xem</label><textarea id="recipeNote" rows="4" maxlength="10000" placeholder="Ghi lại điều muốn tìm hiểu hoặc hỏi người có chuyên môn…"></textarea><p class="muted small">Ghi chú tự lưu trên thiết bị; không thay đổi nội dung sách.</p></section>
+    <div class="detail-bottom"><button type="button" id="previousRecipe" class="button button-outline">Mục trước</button><button type="button" id="nextRecipe" class="button button-outline">Mục tiếp</button></div>
+  </dialog>
+
+  <dialog id="installDialog" class="help-dialog" aria-labelledby="installTitle"><button id="closeInstall" class="icon-button dialog-close" type="button" aria-label="Đóng hướng dẫn"><svg class="icon"><use href="#i-close"/></svg></button><img class="install-icon" src="/icons/icon-192.png" alt="" width="72" height="72"><h2 id="installTitle">Giữ thư viện trên màn hình chính</h2><div id="installHelp"></div><button type="button" id="installDone" class="button button-primary">Đã hiểu</button></dialog>
+  <div id="updateBar" class="update-bar" hidden><span>Có phiên bản mới, dấu trang và ghi chú vẫn được giữ.</span><button id="applyUpdate" type="button" class="button button-primary">Cập nhật</button><button id="dismissUpdate" type="button" class="icon-button" aria-label="Để sau"><svg class="icon"><use href="#i-close"/></svg></button></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="empty-state">Ứng dụng cần JavaScript để tìm kiếm. Hãy bật JavaScript trong trình duyệt hoặc <a href="/source/book.pdf">mở PDF gốc</a>.</div></noscript>
+</body>
+</html>
